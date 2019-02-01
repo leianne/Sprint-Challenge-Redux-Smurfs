@@ -12,9 +12,13 @@ class SmurfListView extends Component {
         this.props.getSmurfs()
     }
 
+    getSmurf = id => {
+        console.log(this.props)
+        this.props.history.push(`/smurfs/${id}`)
+    }
     render() {
         return(
-            <SmurfList smurfs={this.props.smurfs} isFetchingSmurfs={this.props.isFetchingSmurfs}/>
+            <SmurfList smurfs={this.props.smurfs} getSmurf={this.getSmurf} isFetchingSmurfs={this.props.isFetchingSmurfs}/>
         )
     }
 }

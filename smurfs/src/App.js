@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import { Route } from 'react-router-dom'
+
+import SmurfView from './views/SmurfView';
 import SmurfListView from './views/SmurfListView';
 import SmurfFormView from './views/SmurfFormView'
 
@@ -14,8 +17,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <SmurfListView />
-        <SmurfFormView />
+        <Route path='/smurfs/:id' render={props => <SmurfView {...props} />} />
+        <Route exact path='/' component={SmurfListView} />
+        <Route exact path='/' component={SmurfFormView} />
+        
       </div>
     );
   }
