@@ -1,7 +1,12 @@
 /*
   Be sure to import in all of the action types from `../actions`
 */
-
+import { 
+  FETCH_SMURFS_START,
+  FETCH_SMURFS_SUCCESS,
+  FETCH_SMURFS_FAILURE 
+}
+  from '../actions'
 /*
  Your initial/default state for this project could *Although does not have to* look a lot like this
  {
@@ -15,10 +20,31 @@
 */
 const initialState = {
   smurfs: [],
+  isFetchingSmurfs: false,
+  error: ''
 }
 
 const rootReducer = (state=initialState, action) => {
   switch(action.type){
+    case FETCH_SMURFS_START: 
+      return {
+        ...state,
+        isFetchingSmurfs: true,
+        error: ''
+      }
+    case FETCH_SMURFS_SUCCESS:
+      return {
+        ...state,
+        smurfs: action.payload,
+        isFetchingSmurfs: false,
+        error: ''
+      }
+    case FETCH_SMURFS_FAILURE:
+      return {
+        ...state,
+        isFetchingSmurfs:false,
+        error: action.payload
+      }
     default:
       return state;
   }

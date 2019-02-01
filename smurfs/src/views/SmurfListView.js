@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 import { getSmurfs } from '../actions'
 
+import SmurfList from '../components/SmurfList';
+
 class SmurfListView extends Component {
-    state = {
-        smurfs: []
-    }
+    
 
     componentDidMount() {
         this.props.getSmurfs()
@@ -14,10 +14,15 @@ class SmurfListView extends Component {
 
     render() {
         return(
-            <h1>Connected</h1>
+            <SmurfList smurfs={this.props.smurfs} isFetchingSmurfs={this.props.isFetchingSmurfs}/>
         )
     }
 }
 
-
-export default connect(null, {getSmurfs})(SmurfListView);
+const mapStateToProps = state => {
+    return {
+        smurfs: state.smurfs.data,
+        isFetchingSmurfs: state.isFetchingSmurfs
+    }
+}
+export default connect(mapStateToProps, {getSmurfs})(SmurfListView);
