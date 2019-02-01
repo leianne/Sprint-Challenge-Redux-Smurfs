@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import SmurfListView from './views/SmurfListView';
+import SmurfFormView from './views/SmurfFormView'
 
 import './App.css';
 /*
@@ -14,6 +15,7 @@ class App extends Component {
     return (
       <div className="App">
         <SmurfListView />
+        <SmurfFormView />
       </div>
     );
   }
